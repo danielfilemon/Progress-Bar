@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Bar</title>
+    <style>
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #ddd;
+            position: relative;
+        }
+
+        .progress-bar-inner {
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(to right, #FF5733, #08a017);
+            background-size: 200% 100%;
+            animation: progress-animation 2s ease-out;
+        }
+
+        .progress-bar-number {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: black;
+        }
+
+        @keyframes progress-animation {
+            from {
+                width: 0%;
+            }
+
+            to {
+                width: 100%;
+            }
+
+            50% {
+                background-position: right;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="progress-bar">
+        <div class="progress-bar-inner" style="width: 50%"></div>
+        <span class="progress-bar-number">50%</span>
+    </div>
+
+    <script>
+
+        const progressBar = document.querySelector('.progress-bar');
+        const progressInner = document.querySelector('.progress-bar-inner');
+        const progressNumber = document.querySelector('.progress-bar-number');
+
+        function updateProgress(number) {
+
+            progressInner.style.width = number + '%';
+            progressNumber.textContent = number + '%';
+        }
+
+        updateProgress(79);
+
+    </script>
+
+</body>
+
+</html>
